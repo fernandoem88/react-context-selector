@@ -12,7 +12,7 @@ npm install --save react-context-selector
 
 ## Usage
 
-import **createContext** from **react-context-selector** to create a _cleanner component_ to mount directly under the context provider and a _selector hook_ to use instead of the standard _useContext_
+import **createContextSelector** from _react-context-selector_ to create a _cleanner component_ to mount directly under the context provider and a _selector hook_ to use instead of the standard _React.useContext_
 
 ```tsx
 import React, { createContext } from 'react'
