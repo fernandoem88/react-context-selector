@@ -1,6 +1,6 @@
 # react-context-selector
 
-> this is a cleanner of react context unwanted re-renders
+> This small package will help us to clean react context unwanted re-renders using a selector hook
 
 [![NPM](https://img.shields.io/npm/v/react-context-selector.svg)](https://www.npmjs.com/package/react-context-selector)
 
@@ -12,107 +12,52 @@ npm install --save react-context-selector
 
 ## Usage
 
-import **createContextSelector** from _react-context-selector_ to create a _cleanner component_ to mount directly under the context provider and a _selector hook_ to use instead of the standard _React.useContext_
+we should import **createContextSelector** from _react-context-selector_ to create a **Cleanner component** that should be mounted directly under the context provider and a **selector hook** to use instead of the standard _React.useContext_
 
 ```tsx
 import React, { createContext } from 'react'
-
 import { createContextSelector } from 'react-context-selector'
 
 const ctx = createContext(undefined as State)
 
 const [Cleanner, useContextSelector] = createContextSelector(ctx)
 
-const RootTest = () => {
+const ProviderText = () => {
   return (
     <ctx.Provider value={state}>
       {/* the Cleanner component should be mounted directly under the Provider
       and before all other components in the context tree*/}
       <Cleanner />
-      {/*here we can mount other children*/}
-      <MyConsummer />
+      {/*then we can mount our consummer components*/}
       {props.children}
     </ctx.Provider>
   )
 }
 // now we can define a component that consumes the context state
-const MyConsummer = () => {
+const ConsummerTest = () => {
   // this conponent will re-render only if value1 changes
   const value1 = useContextSelector((state) => {
     // do something with the context state and return whatever you want
     return state.value1
   })
 }
-```
 
-# example
-
-```ts
-import React, { useState, createContext } from 'react'
-import { createContextSelector } from 'react-context-selector'
-
-const ctxValue = { x: 1, title: 'test 123' }
-const ctx = createContext(ctxValue)
-export const [Cleanner, useContextSelector] = createContextSelector(ctx)
-
-const Title = React.memo(() => {
-  console.log('Title re-renders')
-  // const { title } = useContext(ctx)
-  const title = useContextSelector((ctx) => {
-    return ctx.title
-  })
-  return <div>{title}</div>
-})
-
-const Number = () => {
-  console.log('Number re-renders')
-  // const { number } = useContext(ctx)
-  const number = useContextSelector((ctx) => {
-    return ctx.number
-  })
-  return <div>{number}</div>
-}
-
-const Root: React.FC = (props) => {
-  const [state, setState] = useState(ctxValue)
+const RootTest = () => {
   return (
-    <ctx.Provider value={state}>
-      <Cleanner />
-      <button
-        onClick={() => {
-          setState((s) => {
-            return { ...s, x: s.x + 1 }
-          })
-        }}
-      >
-        click to increment x
-      </button>
-      {props.children}
-    </ctx.Provider>
-  )
-}
-
-export const App = () => {
-  return (
-    <Root>
-      <Title />
-      <Number />
-    </Root>
+    <ProviderText>
+      <ConsummerTest />
+    </ProviderText>
   )
 }
 ```
 
-## Github
-
-[github repository](https://github.com/fernandoem88/react-context-selector)
+check a working example [here](https://codesandbox.io/s/clean-context-example-5jgbn?file=/src/components/App.jsx:1216-1234)
 
 ## see also
 
-- [react-requests-manager](https://www.npmjs.com/package/react-requests-manager): take a full control on your async actions and keep clean your reducers state
-
-- [react-hooks-in-callback](https://www.npmjs.com/package/react-hooks-in-callback): use directly your hooks in callback
-
-- [react-redux-selector-utils](https://www.npmjs.com/package/react-redux-selector-utils): define and use in a **clean**, **easy** and **fast** way your redux selectors
+- [react-requests-manager](https://www.npmjs.com/package/react-requests-manager)
+- [react-hooks-in-callback](https://www.npmjs.com/package/react-hooks-in-callback)
+- [react-redux-selector-utils](https://www.npmjs.com/package/react-redux-selector-utils)
 
 ## License
 
