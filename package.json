@@ -1,6 +1,6 @@
 {
   "name": "react-context-selector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "create a react context selector hook to avoid unwanted re-renders",
   "homepage": "https://www.linkedin.com/in/fernando-ekutsu-mondele-67405484/",
   "author": {
