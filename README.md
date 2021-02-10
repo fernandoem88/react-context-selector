@@ -110,7 +110,7 @@ export const App = () => {
 
 - [react-requests-manager](https://www.npmjs.com/package/react-requests-manager): take a full control on your async actions and keep clean your reducers state
 
-- [react-hooks-in-callback](https://www.npmjs.com/package/react-hooks-in-callback): use directly your hooks in callback: usefull for actions and remove some hooks noises from your component
+- [react-hooks-in-callback](https://www.npmjs.com/package/react-hooks-in-callback): use directly your hooks in callback
 
 - [react-redux-selector-utils](https://www.npmjs.com/package/react-redux-selector-utils): define and use in a **clean**, **easy** and **fast** way your redux selectors
 
