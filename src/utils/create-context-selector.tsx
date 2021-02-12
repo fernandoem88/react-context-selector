@@ -68,7 +68,7 @@ export const createContextSelector = <T extends any = any>(
       return () => {
         subscription.unsubscribe()
       }
-    }, [])
+    }, [forceUpdate])
     return stateRef.current.value as ReturnType<Selector>
   }
 

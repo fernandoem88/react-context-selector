@@ -18,36 +18,43 @@ we should import **createContextSelector** from _react-context-selector_ to crea
 import React, { createContext } from 'react'
 import { createContextSelector } from 'react-context-selector'
 
-const ctx = createContext(undefined as State)
+// first we define the context
+export const CONTEXT = createContext(undefined as State)
+// then we create the cleanner/selector package
+export const [Cleanner, useContextSelector] = createContextSelector(CONTEXT)
+```
 
-const [Cleanner, useContextSelector] = createContextSelector(ctx)
+the Cleanner component should be mounted directly under the Provider and before all other components in the context tree
 
-const ProviderText = () => {
+```tsx
+import React, { createContext } from 'react'
+import { Cleanner, CONTEXT } from './configs'
+
+const { Provider } = CONTEXT
+
+const ProviderTest = () => {
   return (
-    <ctx.Provider value={state}>
-      {/* the Cleanner component should be mounted directly under the Provider
-      and before all other components in the context tree*/}
+    <Provider value={state}>
       <Cleanner />
       {/*then we can mount our consummer components*/}
       {props.children}
-    </ctx.Provider>
+    </Provider>
   )
 }
-// now we can define a component that consumes the context state
+```
+
+now we can use the **useContextSelector** hook in some consummer components
+
+```tsx
+import React, { createContext } from 'react'
+import { useContextSelector } from './configs'
+
 const ConsummerTest = () => {
   // this conponent will re-render only if value1 changes
   const value1 = useContextSelector((state) => {
     // do something with the context state and return whatever you want
-    return state.value1
+    return doSomething(state)
   })
-}
-
-const RootTest = () => {
-  return (
-    <ProviderText>
-      <ConsummerTest />
-    </ProviderText>
-  )
 }
 ```
 
