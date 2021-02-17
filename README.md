@@ -64,7 +64,7 @@ check a working example [here](https://codesandbox.io/s/clean-context-example-5j
 
 - [react-requests-manager](https://www.npmjs.com/package/react-requests-manager)
 - [react-hooks-in-callback](https://www.npmjs.com/package/react-hooks-in-callback)
-- [react-redux-selector-utils](https://www.npmjs.com/package/react-redux-selector-utils)
+- [reselect-mapper](https://www.npmjs.com/package/reselect-mapper)
 
 ## License
 
